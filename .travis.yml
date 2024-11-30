@@ -5,5 +5,5 @@ services:
 
 before_install:
 - docker build -f Dockerfile.dev -t temp_travis_image .
-- docker run temp_travis_image CI=true npm test
+- docker run -e "CI=true" temp_travis_image npm test
 - echo $?
