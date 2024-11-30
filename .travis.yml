@@ -4,6 +4,6 @@ services:
   - docker
 
 before_install:
-- docker build -t temp_travis_image .
+- docker build -f Dockerfile.dev -t temp_travis_image .
 - docker run temp_travis_image npm test
 - echo $?
