@@ -3,7 +3,9 @@ language: node_js
 services:
   - docker
 
-before_install:
+install: skip
+
+script:
 - docker build -f Dockerfile.dev -t temp_travis_image .
 - docker run -e "CI=true" temp_travis_image npm test
 - echo $?
