@@ -1,23 +1,6 @@
+version: '3'
 services:
-  test-runner:
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
-    volumes:
-      - /app/node_modules
-      - .:/app
-    command: npm test
-  react-server:
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
+  web:
+    build: .
     ports:
-      - "3000:3000"
-    volumes:
-      - /app/node_modules
-      # - type: bind
-      #   source: ./src
-      #   target: /app/src
-      - type: bind
-        source: .
-        target: /app
+      - '80:80'
