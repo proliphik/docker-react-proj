@@ -10,11 +10,13 @@ script:
 - docker run -e "CI=true" temp_travis_image npm test
 
 
-# build the prod image, which actually just runs nginx
-# before_deploy:
-  # - docker build -t temp_travis_image .
-
 # note: this is skipped on pull request builds. then when does it run?
-# want to deploy that nginx + node image to elastic beanstalk
-# deploy:
-  # provider: elasticbeanstalk
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker-course-frontend"
+  env: "docker-course-frontend-env"
+  bucket: "elasticbeanstalk-us-east-2-739614015117"
+  bucket_path: "docker-course-frontend"
+  on:
+    branch: master
